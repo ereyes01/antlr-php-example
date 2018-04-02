@@ -5,7 +5,8 @@ import (
 	"fmt"
 	"log"
 
-	"./parser"
+	"antlr-php/parser"
+
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 )
 
@@ -38,6 +39,6 @@ func main() {
 	p := parser.NewPhpParser(stream)
 	p.AddErrorListener(antlr.NewDiagnosticErrorListener(true))
 	p.BuildParseTrees = true
-	tree := p.Program()
+	tree := p.HtmlDocument()
 	antlr.ParseTreeWalkerDefault.Walk(new(PHPScanner), tree)
 }
