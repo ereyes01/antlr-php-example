@@ -4,6 +4,9 @@ import (
 	"flag"
 	"fmt"
 	"log"
+	"net/http"
+
+	_ "net/http/pprof"
 
 	"github.com/ereyes01/antlr-php-example/parser"
 	"github.com/antlr/antlr4/runtime/Go/antlr"
@@ -28,6 +31,11 @@ func main() {
 	if filename == "" {
 		log.Fatalln("you must supply a filename")
 	}
+
+	// for the profiler
+	go func() {
+		log.Println(http.ListenAndServe("localhost:6060", nil))
+	}()
 
 	input, err := antlr.NewFileStream(filename)
 	if err != nil {
