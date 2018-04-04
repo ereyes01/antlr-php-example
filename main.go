@@ -5,8 +5,7 @@ import (
 	"fmt"
 	"log"
 
-	"antlr-php/parser"
-
+	"github.com/ereyes01/antlr-php-example/parser"
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 )
 
